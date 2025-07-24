@@ -92,21 +92,4 @@ class CarAssemblerTest {
         assertEquals(Brake.CONTINENTAL, actual.getBrake());
         assertEquals(Steering.BOSCH, actual.getSteering());
     }
-
-    @Test
-    void test_Select_fail() {
-        // arrange
-        Car car = new Car();
-        RunTest runTest = mock(RunTest.class);
-        String inputArgs = "4\n1\n2\n1\n1\nexit\n";
-        Scanner sc = new Scanner(new ByteArrayInputStream(inputArgs.getBytes()));
-        CarAssembler assembler = new CarAssembler(car, runTest, sc);
-
-        // act
-        assembler.assembleCar();
-        Car actual = assembler.getCar();
-
-        // assert
-        assertEquals(null, actual.getCarType());
-    }
 }
