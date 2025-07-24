@@ -31,7 +31,7 @@ public class Assemble {
         while (true) {
             initializeBeforeStep();
 
-            selectMenu(step);
+            showStepMenu(step);
 
             String buf = getAnswerAsStr(sc);
 
@@ -50,11 +50,56 @@ public class Assemble {
                 continue;
             }
 
-            step = getStepAfterProcessStep(step, answer);
+            step = getNextStepAfterProcessStep(step, answer);
         }
     }
 
-    private int getStepAfterProcessStep(int step, Integer answer) {
+    private void initializeBeforeStep() {
+        System.out.print(CLEAR_SCREEN);
+        System.out.flush();
+    }
+
+    private void showStepMenu(int step) {
+        switch (step) {
+            case CarType_Q:
+                showCarTypeMenu(); break;
+            case Engine_Q:
+                showEngineMenu(); break;
+            case BrakeSystem_Q:
+                showBrakeMenu(); break;
+            case SteeringSystem_Q:
+                showSteeringMenu(); break;
+            case Run_Test:
+                showRunTestMenu(); break;
+        }
+    }
+
+    private String getAnswerAsStr(Scanner sc) {
+        System.out.print("INPUT > ");
+        return sc.nextLine().trim();
+    }
+
+    private boolean isExitCondition(String buf) {
+        if (buf.equalsIgnoreCase("exit")) {
+            System.out.println("바이바이");
+            return true;
+        }
+        return false;
+    }
+
+    private Integer getAnswerAsInt(String buf) {
+        int answer;
+        try {
+            answer = Integer.parseInt(buf);
+        } catch (NumberFormatException e) {
+            System.out.println("ERROR :: 숫자만 입력 가능");
+            delay(800);
+            return null;
+        }
+        return answer;
+    }
+
+    private int getNextStepAfterProcessStep(int step, Integer answer) {
         switch (step) {
             case CarType_Q:
                 selectCarType(answer);
@@ -105,52 +150,7 @@ public class Assemble {
         return step;
     }
 
-    private void initializeBeforeStep() {
-        System.out.print(CLEAR_SCREEN);
-        System.out.flush();
-    }
-
-    private Integer getAnswerAsInt(String buf) {
-        int answer;
-        try {
-            answer = Integer.parseInt(buf);
-        } catch (NumberFormatException e) {
-            System.out.println("ERROR :: 숫자만 입력 가능");
-            delay(800);
-            return null;
-        }
-        return answer;
-    }
-
-    private boolean isExitCondition(String buf) {
-        if (buf.equalsIgnoreCase("exit")) {
-            System.out.println("바이바이");
-            return true;
-        }
-        return false;
-    }
-
-    private String getAnswerAsStr(Scanner sc) {
-        System.out.print("INPUT > ");
-        return sc.nextLine().trim();
-    }
-
-    private void selectMenu(int step) {
-        switch (step) {
-            case CarType_Q:
-                showCarTypeMenu(); break;
-            case Engine_Q:
-                showEngineMenu(); break;
-            case BrakeSystem_Q:
-                showBrakeMenu(); break;
-            case SteeringSystem_Q:
-                showSteeringMenu(); break;
-            case Run_Test:
-                showRunTestMenu(); break;
-        }
-    }
-
-    private static void showCarTypeMenu() {
+    private void showCarTypeMenu() {
         System.out.println("        ______________");
         System.out.println("       /|            |");
         System.out.println("  ____/_|_____________|____");
@@ -164,7 +164,7 @@ public class Assemble {
         System.out.println("===============================");
     }
 
-    private static void showEngineMenu() {
+    private void showEngineMenu() {
         System.out.println("어떤 엔진을 탑재할까요?");
         System.out.println("0. 뒤로가기");
         System.out.println("1. GM");
@@ -173,7 +173,8 @@ public class Assemble {
         System.out.println("4. 고장난 엔진");
         System.out.println("===============================");
     }
-    private static void showBrakeMenu() {
+
+    private void showBrakeMenu() {
         System.out.println("어떤 제동장치를 선택할까요?");
         System.out.println("0. 뒤로가기");
         System.out.println("1. MANDO");
@@ -181,14 +182,16 @@ public class Assemble {
         System.out.println("3. BOSCH");
         System.out.println("===============================");
     }
-    private static void showSteeringMenu() {
+
+    private void showSteeringMenu() {
         System.out.println("어떤 조향장치를 선택할까요?");
         System.out.println("0. 뒤로가기");
         System.out.println("1. BOSCH");
         System.out.println("2. MOBIS");
         System.out.println("===============================");
     }
-    private static void showRunTestMenu() {
+
+    private void showRunTestMenu() {
         System.out.println("멋진 차량이 완성되었습니다.");
         System.out.println("어떤 동작을 할까요?");
         System.out.println("0. 처음 화면으로 돌아가기");
@@ -196,7 +199,8 @@ public class Assemble {
         System.out.println("2. Test");
         System.out.println("===============================");
     }
-    private static boolean isValidRange(int step, int ans) {
+
+    private boolean isValidRange(int step, int ans) {
         switch (step) {
             case CarType_Q:
                 if (ans < 1 || ans > 3) {
@@ -242,11 +246,13 @@ public class Assemble {
         String name = a == 1 ? "GM" : a == 2 ? "TOYOTA" : a == 3 ? "WIA" : "고장난 엔진";
         System.out.printf("%s 엔진을 선택하셨습니다.\n", name);
     }
+
     private void selectBrakeSystem(int a) {
         stack[BrakeSystem_Q] = a;
         String name = a == 1 ? "MANDO" : a == 2 ? "CONTINENTAL" : "BOSCH";
         System.out.printf("%s 제동장치를 선택하셨습니다.\n", name);
     }
+
     private void selectSteeringSystem(int a) {
         stack[SteeringSystem_Q] = a;
         String name = a == 1 ? "BOSCH" : "MOBIS";
