@@ -10,7 +10,7 @@ import static mission2.util.Util.delay;
 
 public class RunTest {
 
-    public void processRunTest(Car car, Integer answer) {
+    public void runTest(Car car, Integer answer) {
         if (answer == 1) {
             runProducedCar(car);
             delay(2000);

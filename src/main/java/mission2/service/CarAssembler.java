@@ -12,21 +12,21 @@ public class CarAssembler {
 
     private Car car;
     private ProcessStep step;
-    private RunTest carRunTest;
+    private RunTest runTest;
 
     private void init() {
         car = new Car();
         step = ProcessStep.CAR_TYPE;
-        carRunTest = new RunTest();
+        runTest = new RunTest();
     }
 
     public void assembleCar(Scanner sc) {
         init();
 
-        processAssembleCar(step, sc);
+        processAssembleCar(sc);
     }
 
-    private void processAssembleCar(ProcessStep step, Scanner sc) {
+    private void processAssembleCar(Scanner sc) {
         while (true) {
             initializeBeforeStep();
 
@@ -57,22 +57,22 @@ public class CarAssembler {
         switch (step) {
             case CAR_TYPE:
                 car.setCarType(SelectCarTypeFactory.select(answer));
-                delayAndMoveToStep(ProcessStep.ENGINE);
+                moveNextStepAfterDelay(ProcessStep.ENGINE);
                 break;
             case ENGINE:
                 car.setEngine(SelectEngineFactory.select(answer));
-                delayAndMoveToStep(ProcessStep.BRAKE_SYSTEM);
+                moveNextStepAfterDelay(ProcessStep.BRAKE_SYSTEM);
                 break;
             case BRAKE_SYSTEM:
                 car.setBrake(SelectBrakeFactory.select(answer));
-                delayAndMoveToStep(ProcessStep.STEERING_SYSTEM);
+                moveNextStepAfterDelay(ProcessStep.STEERING_SYSTEM);
                 break;
             case STEERING_SYSTEM:
                 car.setSteering(SelectSteeringFactory.select(answer));
-                delayAndMoveToStep(ProcessStep.RUN_TEST);
+                moveNextStepAfterDelay(ProcessStep.RUN_TEST);
                 break;
             case RUN_TEST:
-                carRunTest.processRunTest(car, answer);
+                runTest.runTest(car, answer);
                 break;
         }
     }
@@ -95,7 +95,7 @@ public class CarAssembler {
         return false;
     }
 
-    private void delayAndMoveToStep(ProcessStep step) {
+    private void moveNextStepAfterDelay(ProcessStep step) {
         Util.delay(800);
         this.step = step;
     }
