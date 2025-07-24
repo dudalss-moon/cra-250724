@@ -9,22 +9,19 @@ import java.util.Scanner;
 
 public class CarAssembler {
     private static final String CLEAR_SCREEN = "\033[H\033[2J";
-
     private Car car;
-    private ProcessStep step;
     private RunTest runTest;
     private Scanner sc;
+    private ProcessStep step;
 
-    private void init() {
-        car = new Car();
-        step = ProcessStep.CAR_TYPE;
-        runTest = new RunTest();
-        sc = new Scanner(System.in);
+    public CarAssembler(Car car, RunTest runTest, Scanner sc) {
+        this.step = ProcessStep.CAR_TYPE;
+        this.car = car;
+        this.runTest = runTest;
+        this.sc = sc;
     }
 
     public void assembleCar() {
-        init();
-
         processAssembleCar();
     }
 
@@ -117,5 +114,17 @@ public class CarAssembler {
                 step = ProcessStep.CAR_TYPE;
             }
         }
+    }
+
+    public void setStep(ProcessStep step) {
+        this.step = step;
+    }
+
+    public ProcessStep getStep() {
+        return step;
+    }
+
+    public Car getCar() {
+        return car;
     }
 }

@@ -37,16 +37,6 @@ public class RunTest {
         System.out.printf("Brake    : %s\n", car.getBrake());
         System.out.printf("Steering : %s\n", car.getSteering());
         System.out.println("자동차가 동작됩니다.");
-//        String[] carNames = {"", "Sedan", "SUV", "Truck"};
-//        String[] engNames = {"", "GM", "TOYOTA", "WIA"};
-//        System.out.printf("Car Type : %s\n", carNames[stack[CarType_Q]]);
-//        System.out.printf("Engine   : %s\n", engNames[stack[Engine_Q]]);
-//        System.out.printf("Brake    : %s\n",
-//                stack[BrakeSystem_Q]==1? "Mando":
-//                        stack[BrakeSystem_Q]==2? "Continental":"Bosch");
-//        System.out.printf("Steering : %s\n",
-//                stack[SteeringSystem_Q]==1? "Bosch":"Mobis");
-//        System.out.println("자동차가 동작됩니다.");
     }
 
     private void testProducedCar(Car car) {
@@ -63,20 +53,6 @@ public class RunTest {
         } else {
             System.out.println("자동차 부품 조합 테스트 결과 : PASS");
         }
-
-//        if (stack[CarType_Q] == SEDAN && stack[BrakeSystem_Q] == CONTINENTAL) {
-//            fail("Sedan에는 Continental제동장치 사용 불가");
-//        } else if (stack[CarType_Q] == SUV && stack[Engine_Q] == TOYOTA) {
-//            fail("SUV에는 TOYOTA엔진 사용 불가");
-//        } else if (stack[CarType_Q] == TRUCK && stack[Engine_Q] == WIA) {
-//            fail("Truck에는 WIA엔진 사용 불가");
-//        } else if (stack[CarType_Q] == TRUCK && stack[BrakeSystem_Q] == MANDO) {
-//            fail("Truck에는 Mando제동장치 사용 불가");
-//        } else if (stack[BrakeSystem_Q] == BOSCH_B && stack[SteeringSystem_Q] != BOSCH_S) {
-//            fail("Bosch제동장치에는 Bosch조향장치 이외 사용 불가");
-//        } else {
-//            System.out.println("자동차 부품 조합 테스트 결과 : PASS");
-//        }
     }
 
     private boolean isValidCheck(Car car) {
@@ -85,12 +61,6 @@ public class RunTest {
         if (car.getCarType() == CarType.TRUCK && car.getEngine() == Engine.WIA) return false;
         if (car.getCarType() == CarType.TRUCK && car.getBrake() == Brake.MANDO) return false;
         if (car.getBrake() == Brake.BOSCH_B && car.getSteering() == Steering.BOSCH) return false;
-
-//        if (stack[CarType_Q] == SEDAN && stack[BrakeSystem_Q] == CONTINENTAL) return false;
-//        if (stack[CarType_Q] == SUV   && stack[Engine_Q] == TOYOTA)       return false;
-//        if (stack[CarType_Q] == TRUCK && stack[Engine_Q] == WIA)          return false;
-//        if (stack[CarType_Q] == TRUCK && stack[BrakeSystem_Q] == MANDO)  return false;
-//        if (stack[BrakeSystem_Q] == BOSCH_B && stack[SteeringSystem_Q] != BOSCH_S) return false;
         return true;
     }
 
