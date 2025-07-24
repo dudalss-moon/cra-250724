@@ -1,6 +1,6 @@
-package mission2.factory;
+package mission2.service.factory;
 
-import mission2.parts.Engine;
+import mission2.domain.parts.Engine;
 
 public class SelectEngineFactory {
     private static final int GM = 1, TOYOTA = 2, WIA = 3, BROKEN = 4;

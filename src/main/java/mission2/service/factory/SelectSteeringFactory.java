@@ -1,6 +1,6 @@
-package mission2.factory;
+package mission2.service.factory;
 
-import mission2.parts.Steering;
+import mission2.domain.parts.Steering;
 
 public class SelectSteeringFactory {
     private static final int BOSCH_S = 1, MOBIS = 2;

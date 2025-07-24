@@ -1,8 +1,8 @@
-package mission2;
+package mission2.domain;
 
-import mission2.parts.Brake;
-import mission2.parts.Engine;
-import mission2.parts.Steering;
+import mission2.domain.parts.Brake;
+import mission2.domain.parts.Engine;
+import mission2.domain.parts.Steering;
 
 public class Car {
     private CarType carType;

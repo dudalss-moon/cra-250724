@@ -1,6 +1,6 @@
-package mission2.factory;
+package mission2.service.factory;
 
-import mission2.ProcessStep;
+import mission2.service.ProcessStep;
 
 public class SelectProcessStepFactory {
     public static void select(ProcessStep type) {

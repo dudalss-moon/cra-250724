@@ -1,13 +1,14 @@
-package mission2.validation;
+package mission2.service;
 
-import mission2.*;
-import mission2.parts.Brake;
-import mission2.parts.Engine;
-import mission2.parts.Steering;
+import mission2.domain.Car;
+import mission2.domain.CarType;
+import mission2.domain.parts.Brake;
+import mission2.domain.parts.Engine;
+import mission2.domain.parts.Steering;
 
 import static mission2.util.Util.delay;
 
-public class CarRunTest {
+public class RunTest {
 
     public void processRunTest(Car car, Integer answer) {
         if (answer == 1) {

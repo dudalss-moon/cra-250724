@@ -1,4 +1,4 @@
-package mission2.parts;
+package mission2.domain.parts;
 
 public enum Engine {
     GM, TOYOTA, WIA, BROKEN, NONE;

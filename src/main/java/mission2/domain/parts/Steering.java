@@ -1,21 +1,15 @@
-package mission2;
+package mission2.domain.parts;
 
-public enum CarType {
-    SEDAN {
+public enum Steering {
+    BOSCH {
         @Override
         public String toString() {
-            return "Sedan";
+            return "Bosch";
         }
-
-    }, SUV {
+    }, MOBIS {
         @Override
         public String toString() {
-            return "SUV";
-        }
-    }, TRUCK {
-        @Override
-        public String toString() {
-            return "Trunk";
+            return "Mobis";
         }
     }, NONE {
         @Override

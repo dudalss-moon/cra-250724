@@ -1,6 +1,6 @@
-package mission2.validation;
+package mission2.util.validation;
 
-import mission2.ProcessStep;
+import mission2.service.ProcessStep;
 
 public class AnswerValidator {
     public static boolean isValidRange(ProcessStep step, int ans) {

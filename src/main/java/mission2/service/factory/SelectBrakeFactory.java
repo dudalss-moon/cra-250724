@@ -1,6 +1,6 @@
-package mission2.factory;
+package mission2.service.factory;
 
-import mission2.parts.Brake;
+import mission2.domain.parts.Brake;
 
 public class SelectBrakeFactory {
     private static final int MANDO = 1, CONTINENTAL = 2, BOSCH_B = 3;

@@ -1,23 +1,23 @@
-package mission2;
+package mission2.service;
 
-import mission2.factory.*;
+import mission2.domain.Car;
+import mission2.service.factory.*;
 import mission2.util.Util;
-import mission2.validation.AnswerValidator;
-import mission2.validation.CarRunTest;
+import mission2.util.validation.AnswerValidator;
 
 import java.util.Scanner;
 
-public class AssembleCar {
+public class CarAssembler {
     private static final String CLEAR_SCREEN = "\033[H\033[2J";
 
     private Car car;
     private ProcessStep step;
-    private CarRunTest carRunTest;
+    private RunTest carRunTest;
 
-    public void init() {
+    private void init() {
         car = new Car();
         step = ProcessStep.CAR_TYPE;
-        carRunTest = new CarRunTest();
+        carRunTest = new RunTest();
     }
 
     public void assembleCar(Scanner sc) {

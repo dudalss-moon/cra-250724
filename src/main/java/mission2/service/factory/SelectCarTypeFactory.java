@@ -1,6 +1,6 @@
-package mission2.factory;
+package mission2.service.factory;
 
-import mission2.CarType;
+import mission2.domain.CarType;
 
 public class SelectCarTypeFactory {
 
