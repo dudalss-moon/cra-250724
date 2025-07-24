@@ -13,26 +13,28 @@ public class CarAssembler {
     private Car car;
     private ProcessStep step;
     private RunTest runTest;
+    private Scanner sc;
 
     private void init() {
         car = new Car();
         step = ProcessStep.CAR_TYPE;
         runTest = new RunTest();
+        sc = new Scanner(System.in);
     }
 
-    public void assembleCar(Scanner sc) {
+    public void assembleCar() {
         init();
 
-        processAssembleCar(sc);
+        processAssembleCar();
     }
 
-    private void processAssembleCar(Scanner sc) {
+    private void processAssembleCar() {
         while (true) {
             initializeBeforeStep();
 
             SelectProcessStepFactory.select(step);
 
-            String buf = getAnswerAsStr(sc);
+            String buf = getAnswerAsStr();
 
             if (isExitCondition(buf)) break;
 
@@ -82,7 +84,7 @@ public class CarAssembler {
         System.out.flush();
     }
 
-    private String getAnswerAsStr(Scanner sc) {
+    private String getAnswerAsStr() {
         System.out.print("INPUT > ");
         return sc.nextLine().trim();
     }
